@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>je suis </title>
+</head>
+<body>    
+<title>Bonjour {{utilisateur.name }}</title>
+<p>Voici la liste des différents spots que vous avez déjà effectué !</p>
+<div id="affichage">
+</div>
+<p>Rassuré vous vous pouvez toujour sélectionner ceux que vous n'avez pas encore fait ;)</p>
+<input type="button" onclick="window.location.href = '/ajout';" value="Ajouter">
+
+<script>
+
+var text = {{utilisateur.spots_fait | tojson}};
+var denivele = {{utilisateur.denivele | tojson}};
+var debit = {{utilisateur.debit | tojson}};
+
+
+
+for (var i = 0; i < text.length; i++) {
+
+    var h3 = document.createElement("h3");
+    h3.innerHTML = "Nom du spot : "+text[i];
+    var h33 = document.createElement("h3");
+    h33.innerHTML = "Dénivelé  : "+denivele[i]+" debit : "+debit[i];
+
+
+    var div = document.getElementById("affichage");
+
+    div.appendChild(h3);
+    div.appendChild(h33);
+
+}
+</script>
+
+
+</body>
+</html>

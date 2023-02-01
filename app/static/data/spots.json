@@ -1,0 +1,24 @@
+[
+    {
+      "id": "1",
+      "spot_name": "La Seille",
+      "location": "Jura",
+      "denivele": "200",
+      "debit": "7"
+    },
+    {
+      "id": "2",
+      "spot_name": "JO base for 2024",
+      "location": "Vaires-Sur-Marne",
+      "denivele": "20",
+      "debit": "14"
+    },
+    {
+      "id": "3",
+      "spot_name": "Sault-Brenaz",
+      "location": "Sault-Brenaz",
+      "denivele": "10",
+      "debit": "9"
+    }
+]
+

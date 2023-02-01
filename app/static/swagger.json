@@ -1,0 +1,113 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Théo",
+    "version": "1.0.0",
+    "title": "Kayak Spots",
+    "license": {
+      "name": "Kayak Spots",
+      "url": "https://kayak-spots.com"
+    }
+  },
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login endpoint",
+        "description": "Endpoint for logging in a user",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "formData",
+            "description": "Username of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "passwordd",
+            "in": "formData",
+            "description": "Password of the user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful login",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid credentials"
+          }
+        }
+      }
+      },
+      "/signupverif": {
+        "post": {
+          "operationId": "signupverif",
+          "description": "Handle signup verification and creation of new user",
+          "parameters": [
+            {
+              "in": "formData",
+              "name": "username",
+              "type": "string",
+              "required": true
+            },
+            {
+              "in": "formData",
+              "name": "passwordd",
+              "type": "string",
+              "required": true
+            },
+            {
+              "in": "formData",
+              "name": "email",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully created new user"
+            }
+          }
+        }
+      },
+      "/show": {
+        "post":{
+      }
+      },
+      "/ajouter": {
+        "post": {
+          "tags": [
+            "Ajouter des spots"
+          ],
+          "summary": "Ajouter des spots",
+          "parameters": [
+            {
+              "in": "formData",
+              "name": "spot_1",
+              "type": "boolean",
+              "description": "Spot 1"
+            },
+            {
+              "in": "formData",
+              "name": "spot_2",
+              "type": "boolean",
+              "description": "Spot 2"
+            },
+            
+          ],
+          "responses": {
+            "302": {
+              "description": "Redirection vers la page 'show'"
+            }
+          }
+        }
+      }
+    }
+  }

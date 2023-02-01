@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un spot </title>
+</head>
+<body>
+<p>Voici la liste des différents spots disponibles !</p>
+<p>Si vous souhaitez ajouter des spots à votre liste il vous faut cocher ceux que vous n'avez pas encore fait.</p>
+
+
+
+<fieldset>
+    <legend> Les différents spots </legend>
+    <form action="/ajouter" method="post">
+        <div id="affichage">
+            
+
+        </div>
+        <script type="text/javascript">
+
+   
+var labels = {{infos | tojson}};
+
+var affichage = document.getElementById("affichage");
+for (var i = 0; i < {{d}}; i++) {
+
+    var div = document.createElement("div");
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = "spot_" + (i+1);
+    checkbox.id = "spot_" + (i+1);
+    div.appendChild(checkbox);
+
+
+    var label = document.createElement("label");
+    
+    label.setAttribute("for", checkbox.id);
+    label.innerHTML =  labels[i];
+
+    div.appendChild(label);
+
+    var form = document.createElement("form");
+    form.action = "/remove";
+    form.method = "post";
+    form.id = "form_spot_"+i;
+
+    var input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "rem_spot";
+    input.value = i+1;
+
+    form.appendChild(input);
+
+    var button = document.createElement("button");
+    button.type = "submit";
+    button.innerHTML = "Supprimer ce spot de la liste";
+
+    form.appendChild(button);
+
+    div.appendChild(form)
+
+    affichage.appendChild(div);
+}
+var toz = {{ spots | tojson }};
+    for (let val of toz){
+        for (var i = 0; i < {{d}}; i++) {
+            if (val == i+1){
+                document.getElementById('spot_'+val).checked = true;
+
+            }
+        }
+    }
+
+        </script>
+        
+        <input id="submit" type="submit" value="Submit">
+    </form>
+
+
+</fieldset>
+
+<script>
+    
+</script>
+<br><br>
+<fieldset>
+    <legend> Ajouter un spot à la liste </legend>
+
+<form action="/nouveau_spot" method="post">
+
+        <label for="spot_name">Spot name</label>
+        <input type="text" placeholder="Spot name" id="spot_name" name="spot_name">
+
+        <label for="spot_name">Localisation </label>
+        <input type="text" placeholder="location" id="location" name="location">
+
+        <label for="spot_name">Dénivelé  </label>
+        <input type="text" placeholder="denivele" id="denivele" name="denivele">
+
+        <label for="spot_name">Débit  </label>
+        <input type="text" placeholder="debit" id="debit" name="debit">
+
+
+        <input id="submit" type="submit" value="Submit">
+</form>
+</fieldset>
+</body>
+</html>
+
+
+
